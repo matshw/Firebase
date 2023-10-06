@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "724793950847",
+    "project_id": "fir-2715e",
+    "storage_bucket": "fir-2715e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:724793950847:android:38569efeb4aebba83a754a",
+        "android_client_info": {
+          "package_name": "br.unigran.firebase"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDtKutt8dte2jgusyogIUhN6BesVL-poSE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
