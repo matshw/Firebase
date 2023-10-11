@@ -33,8 +33,6 @@ public class MainActivity extends AppCompatActivity {
     List<Pessoa> listaPessoa;
     ListView listaC;
     DatabaseReference databaseReference;
-    Button pesquisar;
-    EditText pesquisa;
     ListaCAdapter arrayPessoa;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,8 +42,6 @@ public class MainActivity extends AppCompatActivity {
         nome= findViewById(R.id.idNome);
         contato = findViewById(R.id.idContato);
         avaliacao = findViewById(R.id.idRating);
-        pesquisa = findViewById(R.id.idNomePesquisa);
-        pesquisar = findViewById(R.id.idPesquisar);
         listaPessoa = new LinkedList();
         listaC = findViewById(R.id.idLista);
         arrayPessoa = new ListaCAdapter(getApplicationContext(),listaPessoa);
@@ -75,12 +71,10 @@ public class MainActivity extends AppCompatActivity {
             limpar();
         }
     }
-    public void pesquisar(){
-        listar();
-    }
+
     public void listar(){
         DatabaseReference pessoas = databaseReference.child("pessoas");
-        Query query = pessoas.orderByChild("nome").startAt(pesquisa.getText().toString());
+        Query query = pessoas.orderByChild("nome");
 
         query.addValueEventListener(new ValueEventListener() {
             @Override
