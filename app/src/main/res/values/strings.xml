@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Firebase</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="cadastrar_conta">Cadastrar conta</string>
+    <string name="e_mail">E-mail</string>
+    <string name="login">Login</string>
+    <string name="recuperar_conta">Recuperar conta</string>
+    <string name="senha">Senha</string>
+    <string name="criar_conta">Criar conta</string>
+    <string name="recuperar">Recuperar</string>
 </resources>

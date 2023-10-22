@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginActivity">
+
+    <EditText
+        android:id="@+id/idEmailL"
+        android:layout_width="380dp"
+        android:layout_height="58dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="101dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/e_mail"
+        android:inputType="textEmailAddress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.517"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/idSenhaL"
+        android:layout_width="382dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="101dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/senha"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/idEmailL" />
+
+    <ProgressBar
+        android:id="@+id/idCarregarL"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="180dp"
+        android:layout_marginTop="208dp"
+        android:visibility="gone"
+        tools:visibility="visible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/idLoginL" />
+
+    <TextView
+        android:id="@+id/idCadastrarL"
+        android:layout_width="106dp"
+        android:layout_height="22dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/cadastrar_conta"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/idSenhaL"
+        tools:ignore="TextSizeCheck" />
+
+    <TextView
+        android:id="@+id/idRecuperarL"
+        android:layout_width="109dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="168dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/recuperar_conta"
+        app:layout_constraintStart_toEndOf="@+id/idCadastrarL"
+        app:layout_constraintTop_toBottomOf="@+id/idSenhaL"
+        tools:ignore="TextSizeCheck" />
+
+    <Button
+        android:id="@+id/idLoginL"
+        android:layout_width="198dp"
+        android:layout_height="58dp"
+        android:layout_marginStart="149dp"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="174dp"
+        android:text="@string/login"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.254"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/idCadastrarL" />
+
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/botaoGoogle"
+        android:layout_width="163dp"
+        android:layout_height="65dp"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginStart="140dp"
+        android:layout_marginTop="24dp"
+        android:theme="@style/Widget.AppCompat.Button.Colored"
+        android:visibility="visible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/idLoginL" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -13,7 +13,20 @@
           "package_name": "br.unigran.firebase"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "724793950847-994f6m09lcuul4rucg8e87t94aakdckk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.unigran.firebase",
+            "certificate_hash": "06ec03d2b267becabad34f55dc13193d2b2221a6"
+          }
+        },
+        {
+          "client_id": "724793950847-6olaot1bfvrn64flnaplr8789nhghqlo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyDtKutt8dte2jgusyogIUhN6BesVL-poSE"
@@ -21,7 +34,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "724793950847-6olaot1bfvrn64flnaplr8789nhghqlo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }
