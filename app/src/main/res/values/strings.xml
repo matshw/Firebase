@@ -8,4 +8,7 @@
     <string name="senha">Senha</string>
     <string name="criar_conta">Criar conta</string>
     <string name="recuperar">Recuperar</string>
+    <string name="salvar">salvar</string>
+    <string name="telefone">Telefone</string>
+    <string name="nome">Nome</string>
 </resources>
