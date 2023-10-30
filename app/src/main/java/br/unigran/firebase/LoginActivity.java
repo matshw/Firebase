@@ -37,8 +37,7 @@ public class LoginActivity extends AppCompatActivity {
     ProgressBar carregar;
     Button login;
     FirebaseAuth mAuth;
-    private GoogleApiClient googleApiClient;
-    private static final int RC_SIGN_IN = 9001;
+    GoogleSignInClient googleSignInClient;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,45 +51,52 @@ public class LoginActivity extends AppCompatActivity {
         botaoGoogle = findViewById(R.id.botaoGoogle);
         mAuth = FirebaseAuth.getInstance();
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken("724793950847-6olaot1bfvrn64flnaplr8789nhghqlo.apps.googleusercontent.com")
                 .requestEmail()
                 .build();
 
-        googleApiClient = new GoogleApiClient.Builder(this)
-                .enableAutoManage(this, connectionResult -> {
-                    Toast.makeText(this, "Connection failed.", Toast.LENGTH_SHORT).show();
-                })
-                .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
-                .build();
+        googleSignInClient = GoogleSignIn.getClient(this,gso);
 
-        botaoGoogle.setOnClickListener(v -> signInWithGoogle());
+        botaoGoogle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                signInWithGoogle();
+            }
+        });
         clique();
     }
     private void signInWithGoogle() {
-        Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(googleApiClient);
-        startActivityForResult(signInIntent, RC_SIGN_IN);
+        Intent signInIntent = googleSignInClient.getSignInIntent();
+        startActivityForResult(signInIntent, 1);
     }
 
+    private void loginGoogle(String token){
+        AuthCredential credential = GoogleAuthProvider.getCredential(token,null);
+        mAuth.signInWithCredential(credential).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if(task.isSuccessful()){
+                    Toast.makeText(LoginActivity.this, "Login efetuado com sucesso!", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                    finish();
+                }else{
+                    Toast.makeText(LoginActivity.this, "Erro ao efetuar login, tente novamente", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == RC_SIGN_IN) {
-            GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
-            handleSignInResult(result);
-        }
-    }
-
-    private void handleSignInResult(GoogleSignInResult result) {
-        if (result.isSuccess()) {
-            GoogleSignInAccount account = result.getSignInAccount();
-            String displayName = account.getDisplayName();
-            String email = account.getEmail();
-
-            Toast.makeText(this, "Welcome, " + displayName, Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(this, MainActivity.class));
-        } else {
-            Status status = result.getStatus();
-            Toast.makeText(this, "Sign-In failed: " + status.getStatusMessage(), Toast.LENGTH_SHORT).show();
+        if (requestCode == 1) {
+            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+            try{
+                GoogleSignInAccount conta = task.getResult(ApiException.class);
+                loginGoogle(conta.getIdToken());
+            }catch(ApiException exception){
+                Toast.makeText(this, "Nenhum usuário ativo", Toast.LENGTH_SHORT).show();
+            }
         }
     }
     private void clique(){

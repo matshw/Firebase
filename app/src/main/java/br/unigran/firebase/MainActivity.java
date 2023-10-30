@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
     public void limpar(){
         nome.setText(" ");
         contato.setText(" ");
-        avaliacao.setNumStars(0);
+        avaliacao.setRating(0);
     }
 }
 
